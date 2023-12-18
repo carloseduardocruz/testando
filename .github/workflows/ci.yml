@@ -30,19 +30,10 @@ jobs:
               major_pattern: "BREAKING CHANGE:"
               minor_pattern: "feat("
          
-          - name: Print Diagnostic Output
+          - name: Add tag
             run: |
               echo "$NEW_TAG"
               git tag -a $NEW_TAG -m "new version $NEW_TAG"
+              git push origin $NEW_TAG
             env:
               NEW_TAG: ${{ steps.version.outputs.version }}
-
-        
-          - name: Commit
-            run: |
-                git add .
-                git commit -m "Atualizar versão"
-        
-          - name: Push
-            run: |
-                git push origin main
