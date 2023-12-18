@@ -12,31 +12,15 @@ jobs:
         if: github.event.pull_request.merged == true
         runs-on: ubuntu-latest
         steps:
-          - name: Checkout
-            uses: actions/checkout@v2
+          - name: Version
+            uses: paulhatch/semantic-version@v5.2.1
+            id: version
             with:
-              fetch-depth: 0
-
-          - name: versionar
-            uses: paulhatch/semantic-version@v5.3.0
-            with:
-              # The prefix to use to identify tags
               tag_prefix: "v"
-
-          - name: add tag
-            run: |
-              echo "Versão: ${{ steps.versionar.outputs }}"
-
-          - name: config user
-            run: |
-                git config --global user.email "devops@roit.com.br"
-                git config --global user.name "DevOps Squad | ROIT"
-        
-          - name: Commit
-            run: |
-                git add .
-                git commit -m "Atualizar versão"
-        
-          - name: Push
-            run: |
-                git push origin main
+              version_format: "${major}.${minor}.${patch}.${increment}"
+              debug: true
+          
+          - name: Print Diagnostic Output
+            run: echo "$DEBUG_OUTPUT"
+            env:
+              DEBUG_OUTPUT: ${{ steps.version.outputs.debug_output }}
