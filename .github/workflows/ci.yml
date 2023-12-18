@@ -17,10 +17,8 @@ jobs:
             id: version
             with:
               tag_prefix: "v"
-              version_format: "${major}.${minor}.${patch}.${increment}"
-              debug: true
           
           - name: Print Diagnostic Output
             run: echo "$DEBUG_OUTPUT"
             env:
-              DEBUG_OUTPUT: ${{ steps.version.outputs.debug_output }}
+              DEBUG_OUTPUT: ${{ steps.version.outputs.version }}
