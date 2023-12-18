@@ -25,10 +25,7 @@ jobs:
 
           - name: add tag
             run: |
-              echo "Versão: ${{ steps.Versionar.outputs.version }}"
-              echo "Número da versão: ${{ steps.Versionar.outputs.major }}.${{ steps.Versionar.outputs.minor }}.${{ steps.Versionar.outputs.patch }}"
-              echo "Pre-release: ${{ steps.Versionar.outputs.prerelease }}"
-              echo "Build: ${{ steps.Versionar.outputs.build }}"
+              echo "Versão: ${{ steps.Versionar.outputs }}"
 
           - name: config user
             run: |
