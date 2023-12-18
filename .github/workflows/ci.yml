@@ -17,15 +17,18 @@ jobs:
             with:
               fetch-depth: 0
 
-          - name: versionar
+          - name: Version
             uses: paulhatch/semantic-version@v5.2.1
+            id: version
             with:
               tag_prefix: "v"
-
+              version_format: "${major}.${minor}.${patch}.${increment}"
+              debug: true
+          
           - name: Print Diagnostic Output
             run: echo "$DEBUG_OUTPUT"
             env:
-              DEBUG_OUTPUT: ${{ steps.version.outputs.version }}
+              DEBUG_OUTPUT: ${{ steps.version.outputs.debug_output }}
 
           - name: config user
             run: |
