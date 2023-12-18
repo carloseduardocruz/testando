@@ -26,7 +26,9 @@ jobs:
               minor_pattern: "feat("
          
           - name: Print Diagnostic Output
-            run: echo "$NEW_TAG"
+            run: |
+              echo "$NEW_TAG"
+              git tag -a $NEW_TAG -m "new version $NEW_TAG"
             env:
               NEW_TAG: ${{ steps.version.outputs.version }}
 
