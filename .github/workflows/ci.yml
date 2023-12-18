@@ -22,7 +22,9 @@ jobs:
             id: version
             with:
               tag_prefix: "v"
-          
+              major_pattern: "BREAKING CHANGE:"
+              minor_pattern: "fix()"
+         
           - name: Print Diagnostic Output
             run: echo "$NEW_TAG"
             env:
