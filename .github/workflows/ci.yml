@@ -25,7 +25,8 @@ jobs:
 
           - name: add tag
             run: |
-              echo "Versão: ${{ steps.version.outputs }}"
+              echo "Versão: ${{ steps.version.outputs.version }}"
+              echo "Versão: ${{ steps.version.outputs.version_tag }}"
 
           - name: config user
             run: |
