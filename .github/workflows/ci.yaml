@@ -1,15 +1,17 @@
 name: Versionamento
+
 on:
   pull_request:
     branches: [ "main" ]
     types:
-      - merge
+      - closed
       
 jobs:
   version:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout       
         uses: actions/checkout@v2
 
       - name: Versionar
