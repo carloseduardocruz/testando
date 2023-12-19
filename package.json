@@ -1,5 +1,5 @@
 {
-    "name": "@roit/roit-queues",
+    "name": "@roit/devops-test",
     "version": "0.0.40",
     "main": "dist/index.js",
     "types": "src/index.ts",
