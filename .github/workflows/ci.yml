@@ -60,7 +60,11 @@ jobs:
         - uses: actions/checkout@v4
         - run: echo "toma $NEW_TAG"
         - run: cat package.json
-        - run: echo "`jq '.version="${env.NEW_TAG}"' package.json`" > package.json
+        - uses: jossef/action-set-json-field@v2.1
+          with:
+            file: package.json
+            field: version
+            value: ${{ env.NEW_TAG }}
         - run: cat package.json
         # - uses: actions/checkout@v4
         # - uses: actions/setup-node@v3
