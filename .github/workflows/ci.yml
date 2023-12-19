@@ -55,7 +55,7 @@ jobs:
       needs: version
       runs-on: ubuntu-latest
       env:
-        NEW TAG: ${{ needs.version.outputs.NEW_TAG }}
+        NEW_TAG: ${{ needs.version.outputs.NEW_TAG }}
       steps:
         - uses: actions/checkout@v4
         - run: echo "$NEW_TAG"
