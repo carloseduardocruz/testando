@@ -12,7 +12,7 @@ jobs:
         if: github.event.pull_request.merged == true
         runs-on: ubuntu-latest
         outputs:
-          NEW_TAG: v${{ steps.version.outputs.version }}
+          NEW_TAG: ${{ steps.version.outputs.version }}
         steps:
           - name: Checkout
             uses: actions/checkout@v2
@@ -50,7 +50,7 @@ jobs:
               tag_name: ${{ env.NEW_TAG }}
               release_name: ${{ env.NEW_TAG }}
               body: |
-                Changes myfriend
+                Changes my friend
     build:
       needs: version
       runs-on: ubuntu-latest
@@ -58,20 +58,18 @@ jobs:
         NEW_TAG: ${{ needs.version.outputs.NEW_TAG }}
       steps:
         - uses: actions/checkout@v4
-        - run: echo "toma $NEW_TAG"
-        - run: cat package.json
+        - run: echo "new tag - $NEW_TAG"
         - uses: jossef/action-set-json-field@v2.1
           with:
             file: package.json
             field: version
             value: ${{ env.NEW_TAG }}
         - run: cat package.json
-        # - uses: actions/checkout@v4
-        # - uses: actions/setup-node@v3
-        #   with:
-        #     node-version: '20.x'
-        #     registry-url: 'https://registry.npmjs.org'
-        # - run: npm ci
-        # - run: npm publish
-        #   env:
-        #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        - uses: actions/setup-node@v3
+          with:
+            node-version: '18.x'
+            registry-url: 'https://registry.npmjs.org'
+        - run: npm ci
+        - run: npm publish
+          env:
+            NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
