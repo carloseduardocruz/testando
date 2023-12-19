@@ -50,7 +50,7 @@ jobs:
               tag_name: ${{ env.NEW_TAG }}
               release_name: ${{ env.NEW_TAG }}
               body: |
-                Changes my friend
+                release create from actions
     build:
       needs: version
       runs-on: ubuntu-latest
