@@ -58,7 +58,7 @@ jobs:
         NEW_TAG: ${{ needs.version.outputs.NEW_TAG }}
       steps:
         - uses: actions/checkout@v4
-        - run: echo "$NEW_TAG"
+        - run: echo "toma $NEW_TAG"
         # - uses: actions/checkout@v4
         # - uses: actions/setup-node@v3
         #   with:
