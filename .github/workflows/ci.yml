@@ -59,6 +59,7 @@ jobs:
       steps:
         - uses: actions/checkout@v4
         - run: echo "toma $NEW_TAG"
+        - run: cat package.json
         # - uses: actions/checkout@v4
         # - uses: actions/setup-node@v3
         #   with:
