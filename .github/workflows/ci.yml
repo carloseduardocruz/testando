@@ -58,6 +58,8 @@ jobs:
         NEW_TAG: ${{ needs.version.outputs.NEW_TAG }}
       steps:
         - uses: actions/checkout@v4
+          with:
+            ref: v${{ needs.version.outputs.NEW_TAG }}
         - run: echo "new tag - $NEW_TAG"
         - uses: jossef/action-set-json-field@v2.1
           with:
