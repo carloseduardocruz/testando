@@ -45,8 +45,8 @@ jobs:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               NEW_TAG: v${{ steps.version.outputs.version }}
             with:
-              tag_name: ${{NEW_TAG}}
-              release_name: ${{NEW_TAG}}
+              tag_name: ${{ env.NEW_TAG }}
+              release_name: ${{ env.NEW_TAG }}
               body: |
                 Changes myfriend
               
